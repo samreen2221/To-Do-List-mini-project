@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TO DO LIST</title>
+	<link rel="stylesheet" type="text/css" href="style1.css">
+</head>
+<body>
+<div class="container"><div class="box">
+	<h2 >To Do List
+		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHi_f6ICI9eYDAHRbn4v3twniRJTnQHEmwuA&usqp=CAU" height="20px">
+	</h2>
+	<input type="text" placeholder="Write here..." id="inputBx">
+	<ul id="list"></ul>
+</div>
+</div>
+<script>
+	let inputBx=document.querySelector('#inputBx');
+	let list=document.querySelector('#list');
+
+	inputBx.addEventListener("keyup",function(event){
+		if(event.key=="Enter"){
+			addItem(this.value)
+			this.value=""
+		}
+	})
+	let addItem=(inputBx)=>{
+		let listItem=document.createElement("li");
+		listItem.innerHTML= `${inputBx}<i></i>`;
+		listItem.addEventListener("click", function(){
+			this.classList.toggle('done');
+		})
+
+		listItem.querySelector("i").addEventListener("click",function(){
+			listItem.remove();
+		})
+
+		list.appendChild(listItem);
+
+
+	}
+</script>
+</body>
+</html>
